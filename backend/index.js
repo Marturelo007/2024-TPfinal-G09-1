@@ -35,17 +35,23 @@ const server = app.listen(LISTEN_PORT, () => {
     console.log('Rutas definidas:');
     console.log(`   [GET] http://localhost:${LISTEN_PORT}/`);
     console.log(`   [GET] http://localhost:${LISTEN_PORT}/getUsers`);
-    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getSobres`);
-    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getCardModels`);
-    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getJuegos`);
-    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getJuegoXUsers`);
-    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getCards`);
     console.log(`   [PUT] http://localhost:${LISTEN_PORT}/putUser`);
-    console.log(`   [DELETE] http://localhost:${LISTEN_PORT}/deleteUser`);
-    console.log(`   [POST] http://localhost:${LISTEN_PORT}/postUser`);
+    console.log(`   [DELETE] http://localhost:${LISTEN_PORT}/deleteUsers`);
+    console.log(`   [POST] http://localhost:${LISTEN_PORT}/postUsers`);
+
+    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getSobres`);
+
+    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getCardModels`);
+   
+    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getJuego`);
     console.log(`   [POST] http://localhost:${LISTEN_PORT}/postJuego`);
+  
+    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getJuegoXUsers`);
     console.log(`   [POST] http://localhost:${LISTEN_PORT}/postJuegoXUser`);
-    console.log(`   [POST] http://localhost:${LISTEN_PORT}/postCard`);
+  
+    console.log(`   [GET] http://localhost:${LISTEN_PORT}/getCards`);
+    console.log(`   [POST] http://localhost:${LISTEN_PORT}/postCards`);
+  
 });
 
 const io = require('socket.io')(server, {
@@ -109,7 +115,7 @@ app.get("/getCardModels", async (req, res) => {
 });
 
 // Obtener juegos A
-app.get("/getJuegos", async (req, res) => {
+app.get("/getJuego", async (req, res) => {
     try {
         const juegos = await MySQL.realizarQuery("SELECT * FROM Juego");
         res.status(200).json(juegos);
@@ -191,7 +197,7 @@ app.put("/putUser", async function (req, res) {
 });
 
 // Eliminar usuario A
-app.delete("/deleteUser", async function (req, res) {
+app.delete("/deleteUsers", async function (req, res) {
     try {
         const query = `DELETE FROM Users WHERE id = ${req.body.id}`;
 
@@ -208,7 +214,7 @@ app.delete("/deleteUser", async function (req, res) {
 });
 
 // Insertar nueva carta A
-app.post("/postCard", async function (req, res) {
+app.post("/postCards", async function (req, res) {
     try {
         const query = `
             INSERT INTO Cards (idModel, idUser, hand) 

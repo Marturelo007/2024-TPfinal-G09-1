@@ -12,14 +12,14 @@
 }
 
 .input {
-  padding: 8px;
+  margin: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 100%;
+  width: 40%;
+  text-align: center;
   box-sizing: border-box;
   overflow: visible; /* Oculta el scroll vertical y crece automáticamente */
-  min-height: 40px; /* Altura mínima */
 }
 
 .input:focus {

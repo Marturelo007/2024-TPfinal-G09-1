@@ -7,7 +7,7 @@ import { getUsers, getCardModels, getCards, getJuegoXUsers, getSobres, getJuegos
 import Input from "@/components/input"; // Importamos el componente Input
 import styles from "@/app/page.module.css"; // Estilos para el formulario
 import Header from "@/components/header";
-import Deportistas from "@/components/deportistas";
+// import Deportistas from "@/components/componentesViejos/deportistas";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -38,7 +38,7 @@ export default function Home() {
       setSobres(Sobres);
       setJuegos(Juegos);
     } catch (error) {
-      console.error("Error cargando los deportistas:", error);
+      console.error("Error cargando los menu:", error);
     } 
   }
 
@@ -70,10 +70,10 @@ export default function Home() {
      <Header/>
       <main>
         <div className={styles.container}>
-        <h2>deportistas</h2>
+        <h2>menu</h2>
       
-          <Deportistas deportistas={users}
-         />
+          {/* <Deportistas deportistas={users}/> */}
+         
         </div>
           <Input
             label="id User"

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Deportista from "@/components/deportista"
+import Deportista from "@/components/componentesViejos/deportista"
 import styles from "@/components/deportistas.module.css";
 
 export default function Deportistas({deportistas}) {

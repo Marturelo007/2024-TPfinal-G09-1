@@ -47,6 +47,31 @@ export async function getJuegos() {
       console.error("Error al obtener los juegos:", error);
   }
 }
+export async function fetchPostJuego(newJuego) {
+  try {
+    const response = await fetch(`${baseURL}/postJuego`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newJuego),
+    });
+    const data = await response.json(); // Always parse the JSON response
+
+    console.log("Juego response:", data); // Check what you're getting here
+    // Verificamos si la respuesta fue exitosa
+    if (!response.ok) {
+      throw new Error('Error al enviar el Juego');
+    }
+
+    // Parseamos la respuesta
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Error en fetchPostJuego:', error);
+    throw error; // Propagamos el error para manejarlo en el componente
+  }
+}
 
 // Función para obtener los vinculos juego usuario
 export async function getJuegoXUsers() {
@@ -58,6 +83,31 @@ export async function getJuegoXUsers() {
       console.error("Error al obtener las relaciones de juegos y usuarios:", error);
   }
 }
+export async function fetchPostJuegoXUser(newJuegoXUser) {
+  try {
+    const response = await fetch(`${baseURL}/postJuegoXUser`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newJuegoXUser),
+    });
+    const data = await response.json(); // Always parse the JSON response
+
+    console.log("JuegoXUser response:", data); // Check what you're getting here
+    // Verificamos si la respuesta fue exitosa
+    if (!response.ok) {
+      throw new Error('Error al enviar el JuegoXUserXUser');
+    }
+
+    // Parseamos la respuesta
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Error en fetchPostJuegoXUser:', error);
+    throw error; // Propagamos el error para manejarlo en el componente
+  }
+}
 
 // Función para obtener las cartas
 export async function getCards() {
@@ -67,6 +117,32 @@ export async function getCards() {
       return data;
   } catch (error) {
       console.error("Error al obtener las cartas:", error);
+  }
+}
+
+export async function fetchPostCards(newCards) {
+  try {
+    const response = await fetch(`${baseURL}/postCards`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCards),
+    });
+    const data = await response.json(); // Always parse the JSON response
+
+    console.log("Cards response:", data); // Check what you're getting here
+    // Verificamos si la respuesta fue exitosa
+    if (!response.ok) {
+      throw new Error('Error al enviar el CardsXUser');
+    }
+
+    // Parseamos la respuesta
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Error en fetchPostCards:', error);
+    throw error; // Propagamos el error para manejarlo en el componente
   }
 }
 
@@ -90,30 +166,6 @@ export async function fetchRegister(newUser) {
       return result;
     } catch (error) {
       console.error('Error en fetchRegister:', error);
-      throw error; // Propagamos el error para manejarlo en el componente
-    }
-  }
-
-export async function fetchPostMensaje(newMensaje) {
-    try {
-      const response = await fetch(`${baseURL}/postMensaje`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newMensaje),
-      });
-  
-      // Verificamos si la respuesta fue exitosa
-      if (!response.ok) {
-        throw new Error('Error al enviar el mensaje');
-      }
-  
-      // Parseamos la respuesta
-      const result = await response.json();
-      return result;
-    } catch (error) {
-      console.error('Error en fetchPostMensaje:', error);
       throw error; // Propagamos el error para manejarlo en el componente
     }
   }
